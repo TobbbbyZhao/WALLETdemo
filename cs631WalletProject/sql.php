@@ -24,6 +24,8 @@ include 'loginCheck.php';
         ></textarea>
                     <input type="submit" class="submit_button" value="Submit">
                     <td><a id='nav-home' href='index.php'>Logout</a></td>
+
+                    <a style="text-decoration: none; padding: 10px 20px; background-color: #dc3545; color: #fff; border-radius: 5px;" href='search.php'>Search and Statement</a>
     </form>
     <table>
             <?php

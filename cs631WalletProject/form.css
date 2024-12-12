@@ -1,8 +1,6 @@
 body {
 	font-family: 'Times New Roman', sans-serif;
-	height: 100vh;
 	width: 100%;
-	position: fixed;
 	color: black;
 	font-size: 20px;
 	margin: 0;
@@ -14,7 +12,7 @@ body {
 	background-color: white;
 	padding: 15px;
 	border: 3px solid #866161;
-	width: 55%;
+	width: 75%;
 	margin: 0;
 	position: absolute;
 	top: 50%;

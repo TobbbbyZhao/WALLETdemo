@@ -5,7 +5,7 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Welcome to WALLET</title>
-	<!-- <link rel="stylesheet" href="form.css" /> -->
+	<link rel="stylesheet" href="form.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 

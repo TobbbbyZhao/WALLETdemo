@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Request Page</title>
-    <!-- <link rel="stylesheet" href="form.css" /> -->
+    <link rel="stylesheet" href="form.css" />
 </head>
 <body>
     <div class="container">
@@ -60,6 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ssn = $_SESSION['ssn'];
     $currentTime = date('Y-m-d H:i:s'); // Current Date-Time
 
+    $insertElecAddress = "INSERT IGNORE INTO ELEC_ADDRESS (SSN, Identifier, Verified, Type)
+                          VALUES (NULL, '$identifier', 0, 'New')";
+    mysqli_query($con, $insertElecAddress);
     // Validate required fields
     if (empty($identifier) || $percentage <= 0 || $amount <= 0) {
         $message = "Please fill in all required fields with valid values.";
@@ -69,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         try {
             // 1. Insert into REQUEST_TRANSACTION table
-            $stmt1 = $con->prepare("INSERT INTO REQUEST_TRANSACTION (Amount, RDateTime, Memo, SSN) 
+            $stmt1 = $con->prepare("INSERT INTO REQUEST_TRANSACTION (Amount, RDateTime, Memo, SSN)
                                    VALUES (?, ?, ?, ?)");
             $stmt1->bind_param("dsss", $amount, $currentTime, $memo, $ssn);
             $stmt1->execute();
@@ -78,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $rtid = $con->insert_id;
 
             // 2. Insert into FROM table using the RTid
-            $stmt2 = $con->prepare("INSERT INTO `REQUESTED_FROM` (RTid, Identifier, Percentage) 
+            $stmt2 = $con->prepare("INSERT INTO `REQUESTED_FROM` (RTid, Identifier, Percentage)
                                    VALUES (?, ?, ?)");
             $stmt2->bind_param("isd", $rtid, $identifier, $percentage);
             $stmt2->execute();

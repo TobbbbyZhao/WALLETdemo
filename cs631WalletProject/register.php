@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - WALLET</title>
-    <!-- <link rel="stylesheet" href="form.css" /> -->
+    <link rel="stylesheet" href="form.css" />
 </head>
 <body>
     <div class="container">
@@ -65,8 +65,8 @@ if ($_POST) {
     mysqli_begin_transaction($con);
 
     try {
-        $sqlElecE = "INSERT INTO ELEC_ADDRESS (Identifier, Verified, Type) VALUES ('$email', 1,'Email')";
-        $sqlElecP = "INSERT INTO ELEC_ADDRESS (Identifier, Verified, Type) VALUES ('$phoneNo', 1,'Phone')";
+        $sqlElecE = "INSERT INTO ELEC_ADDRESS (Identifier, Verified, Type,SSN) VALUES ('$email', 1,'Email','$ssn')";
+        $sqlElecP = "INSERT INTO ELEC_ADDRESS (Identifier, Verified, Type,SSN) VALUES ('$phoneNo', 1,'Phone','$ssn')";
         if (!mysqli_query($con, $sqlElecE)||!mysqli_query($con, $sqlElecP)) {
             throw new Exception("Error in ELEC_ADDRESS: " . mysqli_error($con));
         }else

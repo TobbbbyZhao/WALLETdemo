@@ -24,6 +24,10 @@ if ($_POST) {
     $ssn = $_SESSION['ssn'];
     $currentTime = date('Y-m-d H:i:s'); // Current Date-Time
 
+     $insertElecAddress = "INSERT IGNORE INTO ELEC_ADDRESS (SSN, Identifier, Verified, Type)
+                          VALUES (NULL, '$identifier', 0, 'New')";
+    mysqli_query($con, $insertElecAddress);
+
     if (empty($identifier) || empty($amount) || empty($cardType)) {
         $message = "Please fill in all required fields.";
     } else {
@@ -49,7 +53,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Page</title>
-    <!-- <link rel="stylesheet" href="form.css" /> -->
+    <link rel="stylesheet" href="form.css" />
 </head>
 <body>
     <div class="container">
